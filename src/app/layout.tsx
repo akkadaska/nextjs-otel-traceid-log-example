@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { getIds } from '@/util/ids';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { traceId, spanId } = getIds();
+  console.info(`[Log from layout.tsx]\ttraceId=${traceId}\tspanId=${spanId}`);
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>

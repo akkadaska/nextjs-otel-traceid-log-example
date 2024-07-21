@@ -1,6 +1,13 @@
+import { getIds } from '@/util/ids';
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const { traceId, spanId } = getIds();
+  console.info(`[Log from page.tsx]\ttraceId=${traceId}\tspanId=${spanId}\tFetching external API`);
+  // Fetch data from the external API
+  // Note: Run `npm run external-api` to start the external API server
+  // UndiciInstrumentation automatically sets the traceparent header for this fetch call
+  await fetch('http://localhost:3001/', { cache: 'no-store'});
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -111,3 +118,5 @@ export default function Home() {
     </main>
   );
 }
+
+export const dynamic = 'force-dynamic';

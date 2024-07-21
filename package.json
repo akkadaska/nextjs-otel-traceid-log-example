@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "external-api": "node external-api.js"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/instrumentation-undici": "^0.4.0",
     "@vercel/otel": "^1.9.1",
+    "express": "^4.19.2",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
